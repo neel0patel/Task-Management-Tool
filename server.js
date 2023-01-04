@@ -1,7 +1,14 @@
-// import and initializing express
+// import and initializing express and dotenv
+require("dotenv").config();
 const express = require("express");
 
+// import connectDB method from config/db.js
+const connectDB = require("./config/db");
+
 const app = express();
+
+// call the method
+connectDB();
 
 // initialize middleware
 app.use(express.json({ extended: false }));
