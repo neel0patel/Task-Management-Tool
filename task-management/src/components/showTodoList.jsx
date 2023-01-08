@@ -29,7 +29,7 @@ export function ShowTodoList() {
   // using axios to GET request to backend and then storing the data in todo using setTodo
   useEffect(() => {
     axios
-      .get("http://localhost:3000/api/todo") //CHANGE PORT
+      .get("http://localhost:3000/api/todo")
       .then((res) => {
         console.log(res.data);
         setTodo(res.data);
@@ -38,6 +38,14 @@ export function ShowTodoList() {
         console.log(err);
       });
   }, []);
+  // delete function that will send a DELETE request to the server(it will use the "_id" of a task to determine what's getting deleted)
+  function handleDelete(e) {
+    axios.delete(`http://localhost:3000/api/todo/${e.target.name}`);
+
+    setTodo((data) => {
+      return data.filter((todo) => todo._id !== e.target.name);
+    });
+  }
 
   return (
     <section className="container">
@@ -48,7 +56,7 @@ export function ShowTodoList() {
         <h1>ToDo</h1>
         <ul className="list-container">
           {todo.map((data) => (
-            <TodoCard data={data} />
+            <TodoCard data={data} handleDelete={handleDelete} />
           ))}
         </ul>
       </section>
