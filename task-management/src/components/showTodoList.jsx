@@ -1,8 +1,9 @@
 // this component will read all the documents created & will fetch them from the database
 
-// import useState, useEffect, and axios
+// import useState, useEffect, Link and axios
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 //TodoCard function will display the contents of the todo
 function TodoCard({ data }) {
@@ -28,7 +29,7 @@ export function ShowTodoList() {
   // using axios to GET request to backend and then storing the data in todo using setTodo
   useEffect(() => {
     axios
-      .get("http://localhost:3001/api/todo")
+      .get("http://localhost:3000/api/todo") //CHANGE PORT
       .then((res) => {
         console.log(res.data);
         setTodo(res.data);
@@ -40,6 +41,9 @@ export function ShowTodoList() {
 
   return (
     <section className="container">
+      <Link to="/createTodo" className="button-new">
+        <button className="button">New</button>
+      </Link>
       <section className="contents ">
         <h1>ToDo</h1>
         <ul className="list-container">
