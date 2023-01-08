@@ -28,7 +28,7 @@ export function ShowTodoList() {
   // using axios to GET request to backend and then storing the data in todo using setTodo
   useEffect(() => {
     axios
-      .get("http://localhost:3000/api/todo")
+      .get("http://localhost:3001/api/todo")
       .then((res) => {
         console.log(res.data);
         setTodo(res.data);
