@@ -3,8 +3,8 @@ import { useState } from "react";
 import axios from "axios";
 
 // this updateTodo component is nearly the identical layout to "createTodo"  with variables being only the differences
-// UpdateTodo will consist of 3 props (_id, handleClose. handleEdits)
-export function UpdateTodo({ _id, handleClose, handleEdits }) {
+// UpdateTodo will consist of 3 props (_id, handleClose. handleUpdate)
+export function UpdateTodo({ _id, handleClose, handleUpdate }) {
   const [data, setData] = useState({ title: "", description: "" });
 
   // function handleChange will recieve the input data
@@ -19,7 +19,7 @@ export function UpdateTodo({ _id, handleClose, handleEdits }) {
     console.log({ _id }, { data });
 
     axios
-      .post(`http://localhost:3000/api/todo/${_id}`, data)
+      .put(`http://localhost:3000/api/todo/${_id}`, data)
       .then((res) => {
         setData({ title: "", description: "" });
         console.log(res.data.message);
@@ -35,7 +35,7 @@ export function UpdateTodo({ _id, handleClose, handleEdits }) {
       onSubmit={(e) => {
         handleSubmit(e);
         handleClose();
-        handleEdits();
+        handleUpdate();
       }}
     >
       <label htmlFor="title" className="label">
