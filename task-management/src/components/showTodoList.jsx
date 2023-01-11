@@ -80,8 +80,11 @@ export function ShowTodoList() {
       <Link to="/createTodo" className="button-new">
         <button className="button">New</button>
       </Link>
+      <Link to="/login" className="button-new">
+        <button className="button">Log In</button>
+      </Link>
       <section className="contents ">
-        <h1>ToDo</h1>
+        <h1>Tasks</h1>
         <ul className="list-container">
           {todo.map((data) => (
             <TodoCard
@@ -95,9 +98,7 @@ export function ShowTodoList() {
       {open ? (
         <section className="update-container">
           <div className="update-contents">
-            <p onClick={handleClose} className="close">
-              &times
-            </p>
+            <p onClick={handleClose} className="close"></p>
 
             <UpdateTodo
               _id={id}
