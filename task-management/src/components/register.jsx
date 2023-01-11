@@ -12,6 +12,9 @@ export const Register = (props) => {
   };
   return (
     <>
+      <Link to="/" className="back-button">
+        Back
+      </Link>
       <form onSubmit={handleSubmit}>
         <label htmlFor="name">Name</label>
         <input
