@@ -1,8 +1,9 @@
 const mongoose = require("mongoose");
+const express = require("express");
 
 const { Schema } = mongoose;
 
-const UserSchema = new Schema({
+const UserSchema = new mongoose.Schema({
   name: {
     type: "String",
     // required: true,

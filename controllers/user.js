@@ -3,8 +3,11 @@ const Todo = require("../models/todo");
 
 // createUser method will create a new user
 exports.createUser = (req, res) => {
+  console.log(req.body);
   User.create(req.body)
-    .then((data) => res.json(data))
+    .then((data) => {
+      res.json(data);
+    })
     .catch((err) => {
       res
         .status(400)

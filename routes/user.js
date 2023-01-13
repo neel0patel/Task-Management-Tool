@@ -10,10 +10,10 @@ const {
 } = require("../controllers/user");
 
 /**
- * @route POST /api/create
+ * @route POST /api/user/create
  * @description create user
  */
-router.post("/", createUser);
+router.post("/create", createUser);
 
 /**
  * @route POST /api/todo/:userId

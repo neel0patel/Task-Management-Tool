@@ -70,7 +70,7 @@ export function ShowTodoList() {
   }
 
   // handleClose function will close the UpdateTodo component; setting id to an empty string and open to false
-  function handleClose(e) {
+  function handleClose() {
     setId("");
     setOpen(false);
   }
