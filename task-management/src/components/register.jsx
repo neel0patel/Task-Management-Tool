@@ -3,12 +3,12 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 
 export const Register = () => {
-  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
   const [pass, setPass] = useState("");
   const [name, setName] = useState("");
 
-  const emailUpdate = (event) => {
-    setEmail(event.target.value);
+  const usernameUpdate = (event) => {
+    setUsername(event.target.value);
   };
   const passUpdate = (event) => {
     setPass(event.target.value);
@@ -17,29 +17,47 @@ export const Register = () => {
     setName(event.target.value);
   };
 
-  const handleSubmit = async () => {
-    const postURL = "http://localhost:3000/api/user/create"; //Our previously set up route in the backend
-    await axios(postURL, {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        // We should keep the fields consistent for managing this data later
-        email: email,
-        pass: pass,
-        name: name,
-      }),
-    })
-      .then((response) => {
-        console.log(response);
-        // Once posted, the user will be notified
-        alert("You have been added to the system!");
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    console.log("submit");
+    const userObj = {
+      username,
+      pass,
+      name,
+    };
+
+    await axios
+      .post("http://localhost:3000/api/user/create", userObj, {
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
       })
-      .catch((err) => {
-        console.log(err);
-      });
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
+    // const postURL = "http://localhost:3001/register"; // changed by gillll
+    // const postURL = "http://localhost:3000/api/user/create"; //Our previously set up route in the backend
+    // await axios(postURL, {
+    //   method: "POST",
+    //   headers: {
+    //     Accept: "application/json",
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify({
+    //     // We should keep the fields consistent for managing this data later
+    //     username: username,
+    //     pass: pass,
+    //     name: name,
+    //   }),
+    // })
+    //   .then((res) => {
+    //     console.log(res);
+    //     // Once posted, the user will be notified
+    //     alert("You have been added to the system!");
+    //   })
+    //   .catch((err) => {
+    //     console.log(err);
+    //   });
   };
 
   return (
@@ -60,13 +78,13 @@ export const Register = () => {
         />
         <label htmlFor="email">Email</label>
         <input
-          value={email}
+          value={username}
           required
-          onChange={emailUpdate}
-          type="email"
-          placeholder="youremail@here.com"
-          id="email"
-          name="email"
+          onChange={usernameUpdate}
+          type="text"
+          placeholder="username"
+          id="username"
+          name="username"
         />
         <label htmlFor="password">Password</label>
         <input

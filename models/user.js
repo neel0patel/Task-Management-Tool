@@ -1,23 +1,25 @@
 const mongoose = require("mongoose");
-const express = require("express");
+const passportLocalMongoose = require("passport-local-mongoose"); // Added by gillskiiiiiiiii
 
 const { Schema } = mongoose;
 
 const UserSchema = new mongoose.Schema({
   name: {
     type: "String",
-    // required: true,
+    required: true,
   },
-  email: {
+  username: {
     type: "String",
-    // required: true,
+    required: true,
   },
   password: {
     type: "String",
-    // required: true,
+    required: true,
   },
   todo: [{ type: Schema.Types.ObjectId, ref: "Todo" }],
 });
+
+UserSchema.plugin(passportLocalMongoose); // Added by gillskiiiiiiiii
 
 const User = mongoose.model("User", UserSchema);
 

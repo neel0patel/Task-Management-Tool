@@ -4,6 +4,7 @@ const router = express.Router();
 
 const {
   createUser,
+  loginUser,
   createTodo,
   getUser,
   getAllTodo,
@@ -14,6 +15,12 @@ const {
  * @description create user
  */
 router.post("/create", createUser);
+
+/**
+ * @route POST /api/user/login
+ * @description login user
+ */
+router.post("/login", loginUser);
 
 /**
  * @route POST /api/todo/:userId

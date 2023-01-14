@@ -1,5 +1,6 @@
 // import mongoose
 const mongoose = require("mongoose");
+const passportLocalMongoose = require("passport-local-mongoose"); // Added by gillskiiiiiiiii
 
 const { Schema } = mongoose;
 
@@ -13,6 +14,7 @@ const TodoSchema = new mongoose.Schema({
     type: "String",
   },
 });
+TodoSchema.plugin(passportLocalMongoose); // Added by gillskiiiiiiiii
 
 const Todo = mongoose.model("Todo", TodoSchema);
 

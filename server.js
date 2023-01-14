@@ -32,3 +32,32 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`server is running on http://localhost:${PORT}`);
 });
+
+// Added by gillskiiiiiiiii
+
+const User = require("./models/user");
+const passport = require("passport");
+const session = require("express-session");
+const LocalStrategy = require("passport-local").Strategy;
+var jwt = require("jsonwebtoken");
+
+app.use(
+  session({
+    name: "session-id",
+    secret: "123-456-789",
+    saveUninitialized: false,
+    resave: false,
+    cookie: {
+      express: "24h",
+    },
+  })
+);
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
+exports.verifyUser = passport.authenticate("jwt", { session: false });
