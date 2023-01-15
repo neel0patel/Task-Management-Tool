@@ -1,1 +1,1 @@
-web: node ./task-management/src/App.js
+web: node ./task-management/src/index.js
