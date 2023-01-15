@@ -33,7 +33,10 @@ export const Register = () => {
           "Content-Type": "application/json",
         },
       })
-      .then((res) => console.log(res))
+      .then((res) => {
+        console.log(res);
+        alert("You've been added to the system!");
+      })
       .catch((err) => console.log(err));
     // const postURL = "http://localhost:3001/register"; // changed by gillll
     // const postURL = "http://localhost:3000/api/user/create"; //Our previously set up route in the backend
