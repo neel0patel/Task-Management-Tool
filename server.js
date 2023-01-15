@@ -1,4 +1,5 @@
 // import and initializing express, dotenv and cors
+const path = require("path");
 const express = require("express");
 const cors = require("cors");
 require("dotenv").config();
@@ -14,6 +15,9 @@ const todo = require("./routes/todo");
 
 // call the method
 connectDB();
+
+// Have Node serve the files for our built React app
+app.use(express.static(path.resolve(__dirname, "./task-management/build")));
 
 // initializing cors to be used
 app.use(cors({ origin: true, credentials: true }));
