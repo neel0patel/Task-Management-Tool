@@ -91,7 +91,7 @@ export const Login = () => {
 
   return (
     <>
-      <Link to="/" className="back-button">
+      <Link to="/" className="back-Button">
         Back
       </Link>
       <form onSubmit={handleSubmit}>
@@ -104,6 +104,7 @@ export const Login = () => {
           placeholder="username"
           id="username"
           name="username"
+          className="login-input"
         />
         <label htmlFor="password">Password</label>
         <input
@@ -114,9 +115,10 @@ export const Login = () => {
           placeholder="***********"
           id="password"
           name="password"
+          className="login-input"
         />
         <button
-          className="button"
+          className="button-login"
           type="submit"
           value="login"
           onClick={handleSubmit}
@@ -124,7 +126,7 @@ export const Login = () => {
           Log In
         </button>
       </form>
-      <Link to="/register" className="button-new">
+      <Link to="/register" className=".button-needAcc">
         <button className="button">Need an account? Click here!</button>
       </Link>
     </>

@@ -62,7 +62,7 @@ export const Register = () => {
 
   return (
     <>
-      <Link to="/" className="back-button">
+      <Link to="/" className="back-BUtton">
         Back
       </Link>
       <form onSubmit={handleSubmit}>
@@ -75,6 +75,7 @@ export const Register = () => {
           placeholder="Insert Name"
           id="name"
           name="name"
+          className="register-input"
         />
         <label htmlFor="email">Email</label>
         <input
@@ -85,6 +86,7 @@ export const Register = () => {
           placeholder="username"
           id="username"
           name="username"
+          className="register-input"
         />
         <label htmlFor="password">Password</label>
         <input
@@ -95,12 +97,13 @@ export const Register = () => {
           placeholder="***********"
           id="password"
           name="password"
+          className="register-input"
         />
         {/* <Link className="button-new"> */}
-        <button className="button">Log In</button>
+        <button className="login-regButton">Log In</button>
         {/* </Link> */}
       </form>
-      <Link to="/login" className="button-new">
+      <Link to="/login" className="button-already">
         <button className="button">Already have an account? Click here!</button>
       </Link>
     </>

@@ -77,10 +77,10 @@ export function ShowTodoList() {
 
   return (
     <section className="container">
-      <Link to="/createTodo" className="button-new">
+      <Link to="/createTodo" className="button-create">
         <button className="button">New</button>
       </Link>
-      <Link to="/login" className="button-new">
+      <Link to="/login" className="button-mainlog">
         <button className="button">Log In</button>
       </Link>
       <section className="contents ">
